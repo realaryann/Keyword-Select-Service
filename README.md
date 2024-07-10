@@ -1,6 +1,6 @@
-<h2>Keyword-Select-Service</h2>
+<h1>Keyword-Select-Service</h1>
 
-<h3>ROS2 service written in Python to extract keywords from transcribed text, send them to the server, and for the server to broadcast them.</h3>
+<h2>ROS2 service written in Python to extract keywords from transcribed text, send them to the server, and for the server to broadcast them.</h2>
 
 <p>This repository consists of two ROS2 packages, <b>listener and serv</b>.</p>
 <p>Listener consists of the client that extracts the actual keywords from the transcribed text, then asynchronously sends them to the server</p>
