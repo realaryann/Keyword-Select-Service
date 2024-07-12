@@ -2,8 +2,9 @@ import yaml
 
 class Words:
 	words = []
-	def __init__(self):
-		with open("/home/csrobot/vosktest/src/listener/dict/dict.yaml", 'r') as f:
+	def __init__(self, name):
+		path = f"/home/csrobot/vosktest/src/hubo_voice_command/dict/{name}"
+		with open(path, 'r') as f:
 			self.words = yaml.load(f, Loader=yaml.SafeLoader)
 	def add(self, word: str) -> None:
 		self.words.append(word)

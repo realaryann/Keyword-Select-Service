@@ -1,0 +1,4 @@
+string message # Message for request
+
+---
+bool success  # Did it achieve it?
