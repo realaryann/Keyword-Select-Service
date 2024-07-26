@@ -1,5 +1,7 @@
 import rclpy
 from custom_interfaces.srv import String
+from rclpy.action import ActionClient
+from custom_interfaces.action import Huboaction
 from rclpy.node import Node
 
 class KeyService(Node):
@@ -7,39 +9,61 @@ class KeyService(Node):
     def __init__(self):
         super().__init__('key_service')
         self.srv = self.create_service(String, 'key_listen', self.klisten_callback)
+        self._action_client = ActionClient(self, Huboaction, 'hubo_as')
 
     def klisten_callback(self, request, response):
         response.success = True
         self.msg = request.message
+        self.get_logger().info(f"Received: {self.msg}")
         self.lst = self.msg.split()
         for ins in self.lst:
             if ins == 'walk':
-                self.walk()
-            elif ins == 'wheel':
-                self.wheel()
+                self.send_goal('walk')
+            elif ins == 'drive':
+                self.send_goal('drive')
             elif ins == 'rest':
-                self.rest()
+                self.send_goal('rest')
             elif ins == 'transform':
-                self.transform()
+                self.send_goal('transform')
         return response
 
-    def walk(self):
-        return 
+    def send_goal(self, text):
+        goal_msg = Huboaction.Goal()
+        goal_msg.msg = text
 
-    def wheel(self):
-        return
+        self._action_client.wait_for_server()
+        self._send_goal_future = self._action_client.send_goal_async(
+            goal_msg, feedback_callback=self.feedback_callback)
 
-    def rest(self):
-        return
+        self._send_goal_future.add_done_callback(self.goal_response_callback)
 
-    def transform(self):
-        return
+    def goal_response_callback(self, future):
+        goal_handle = future.result()
+        if not goal_handle.accepted:
+            self.get_logger().info('Goal rejected')
+            return
+
+        self.get_logger().info('Goal accepted')
+
+        self._get_result_future = goal_handle.get_result_async()
+        self._get_result_future.add_done_callback(self.get_result_callback)
+
+    def get_result_callback(self, future):
+        result = future.result().result
+        self.get_logger().info('Result: {0}'.format(result.status))
+        rclpy.shutdown()
+
+    def feedback_callback(self, feedback_msg):
+        feedback = feedback_msg.feedback
+        self.get_logger().info(
+            'Received feedback: {0}'.format(feedback.feedback))
+
 
 def main(args=None):
     rclpy.init(args=args)
 
     key_service = KeyService()
-
+    
     rclpy.spin(key_service)
 
     rclpy.shutdown()

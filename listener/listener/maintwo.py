@@ -2,8 +2,8 @@ import sys
 from . import dictionary, extract
 import rclpy
 from rclpy.node import Node
-import os.path, time
-from rclpy.node import Node
+import os.path
+import time
 from custom_interfaces.srv import String
 
 
@@ -31,13 +31,13 @@ class KeyClientAsync(Node):
         for i in self.match:
             res=res+i+' '
         finalres: str = res[0:-1]
-        if len(finalres) != 0:            
+        if len(finalres) != 0:
             self.req.message = finalres
-            print(f"INFO: sent: {self.req.message}") 
+            self.get_logger().info(f'Sent {self.req.message}')
             self.future = self.cli.call_async(self.req)
             rclpy.spin_until_future_complete(self, self.future)
             return self.future.result()
-        
+
     def timer_callback(self):
         # Required to exist for rclpy.ok() loop
         pass
@@ -48,10 +48,10 @@ def main(args=None):
     while rclpy.ok():
         # check here for new file, remove timer cb
         rclpy.spin_once(minimal_client)
-        if (minimal_client.creation != time.ctime(os.path.getctime('/home/csrobot/vosktest/input_saver/results/test.txt'))):
+        if minimal_client.creation != time.ctime(os.path.getctime('/home/csrobot/vosktest/input_saver/results/test.txt')):
             minimal_client.ready_to_send = True
             minimal_client.creation = time.ctime(os.path.getctime('/home/csrobot/vosktest/input_saver/results/test.txt'))
-        if (minimal_client.ready_to_send):
+        if minimal_client.ready_to_send:
             response = minimal_client.send_request()
             minimal_client.ready_to_send=False
     minimal_client.destroy_node()

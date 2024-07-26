@@ -1,0 +1,5 @@
+string msg
+---
+bool status
+---
+bool feedback

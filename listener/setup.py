@@ -20,7 +20,6 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-        'listener_node = listener.main:main',
         'key_node = listener.maintwo:main'
         ],
     },
