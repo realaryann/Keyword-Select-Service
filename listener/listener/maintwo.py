@@ -23,7 +23,7 @@ class KeyClientAsync(Node):
         self.timer = self.create_timer(0.5, self.timer_callback)
 
     def send_request(self):
-        self.ready_to_send = False
+        self.ready_to_send: bool = False
         self.ret = extract.clean_text(extract.get_text())
         self.split = self.ret.split(' ')
         self.match: list[str] = extract.match(self.split, self.dicti.get())

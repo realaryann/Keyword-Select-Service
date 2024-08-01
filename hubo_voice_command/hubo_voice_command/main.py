@@ -33,7 +33,7 @@ class KeyService(Node):
         goal_msg = Huboaction.Goal()
         goal_msg.msg = text
         if text == 'stop':
-            return;
+            return
         else:
             self._action_client.wait_for_server()
             self._send_goal_future = self._action_client.send_goal_async(
