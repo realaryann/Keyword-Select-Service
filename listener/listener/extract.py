@@ -1,7 +1,7 @@
 from . import dictionary
 
 def clean_text(text: str) -> str:
-	cleantxt = ''
+	cleantxt: str = ''
 	for x in text:
 		if x.isalpha():
 			cleantxt=cleantxt+x
@@ -20,7 +20,7 @@ def get_text() -> str:
 		return text
 
 def match(split: list[str] , goal: list[str]) -> list[str]:
-	res = []
+	res: list = []
 	for x in split:
 		if x in goal:
 			res.append(x)
