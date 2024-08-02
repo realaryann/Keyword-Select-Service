@@ -11,6 +11,7 @@
 <h3>Installation</h3>
 <ul>
   <li>Download the  packages into your {ros2 workspace}/src</li>
+  <li>Change the absolute paths in all files based on your file structure</li>
   <li>Execute <b>colcon build</b> in the workspace root</li>
   <li>Execute <b>source install/setup.bash</b> to source essential files</li>
 </ul>
