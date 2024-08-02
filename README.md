@@ -4,9 +4,10 @@
 
 <p>This repository consists of two ROS2 packages, <b>listener and hubo_voice_command</b>.</p>
 <p>Listener consists of the general client that extracts the actual keywords from the transcribed text, then asynchronously sends them to the server</p>
-<p>hubo_voice_command consists of the server that receives the keywords and deals with them individually.</p>
+<p>hubo_voice_command consists of the server and action client that receives the keywords and deals with them individually by passing them off to the action server.</p>
 <p>These ROS2 packages are meant to work with https://github.com/realaryann/input_saver (speech-to-text converter)</p>
 <p>The custom service String is created to be used with these packages for transfer of keywords</p>
+<p>custom action message Huboaction is created to be used to communicate to the action server</p>
 
 <h3>Installation</h3>
 <ul>
