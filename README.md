@@ -23,6 +23,11 @@
   <li>Open hubo_dict.yaml and add any keywords you wish to detect</li>
 </ul>
 
+<h3>Working with other Robots</h3>
+<ul>
+  <li>If working with a different robot, you must create a different service provider for the robot, but the client can stay the same!</li>
+  <li>To create a different service provider, you can do so by creating a different package and linking the service provider to 'key_listen'</li>
+</ul>
 <h3>Reading the text</h3>
 <ul>
   <li>PATHs for this service are absolute and <b>need to be changed</b> to correctly read the text</li>
