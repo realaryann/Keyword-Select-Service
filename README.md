@@ -9,7 +9,7 @@
 <p>The custom service String is created to be used with these packages for transfer of keywords</p>
 <p>custom action message Huboaction is created to be used to communicate to the action server</p>
 
-![image](https://github.com/user-attachments/assets/b89b1513-22b5-4236-a478-1c23d3863106)
+![ezgif](https://github.com/user-attachments/assets/eab42969-001b-4466-b800-64fe3ab196fd)
 
 <h3>Installation</h3>
 <ul>
