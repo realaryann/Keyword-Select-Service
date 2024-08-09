@@ -10,9 +10,9 @@
 <p>custom action message Huboaction is created to be used to communicate to the action server</p>
 
 ![Screencastfrom08-09-2024095405AM-ezgif com-speed](https://github.com/user-attachments/assets/036e9f6b-25d6-4eb1-a42a-19fdd17beb86)
-<br>working pipeline to extract keywords from complex sentences
+<br>Working pipeline to extract keywords from complex sentences
 
-<h3>Installation</h3>
+<h3><ins>Installation</ins></h3>
 <ul>
   <li>Download the  packages into your {ros2 workspace}/src</li>
   <li>Change the absolute paths in all files based on your file structure</li>
@@ -20,26 +20,26 @@
   <li>Execute <b>source install/setup.bash</b> to source essential files</li>
 </ul>
 
-<h3>Adding Keywords</h3>
+<h3><ins>Adding Keywords</ins></h3>
 <ul>
   <li>Navigate to hubo_voice_command/dict</li>
   <li>Open hubo_dict.yaml and add any keywords you wish to detect</li>
   <li>If working with other robots, you must declare their yaml dictionaries in this directory</li>
 </ul>
 
-<h3>Working with other Robots</h3>
+<h3><ins>Working with other Robots</ins></h3>
 <ul>
   <li>If working with a different robot, you must create a different service provider for the robot, but the client can stay the same!</li>
   <li>To create a different service provider, you can do so by creating a different package and linking the service provider to 'key_listen'</li>
 </ul>
 
-<h3>Reading the text</h3>
+<h3><ins>Reading the text</ins></h3>
 <ul>
   <li>PATHs for this service are absolute and <b>need to be changed</b> to correctly read the text</li>
   <li>You can change the path of the input file by navigating to listener/listener and replace any PATHs leading to test.txt</li>
 </ul>
 
-<h3>Running the service</h3>
+<h3><ins>Running the service</ins></h3>
 <ul>
   <li>Open two terminals, three if you wish for live transcription to broadcasting</li>
   <li>Navigate to your ROS2 workspace</li>
