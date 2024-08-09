@@ -1,6 +1,6 @@
-<h1>Keyword-Select-Service</h1>
+<h1><ins>Keyword-Select-Service</ins></h1>
 
-<h2>ROS2 service written in Python to extract keywords from transcribed text, send them to the server, and for the server to broadcast them.</h2>
+<h2><ins>ROS2 service written in Python to extract keywords from transcribed text, send them to the server, and for the server to broadcast them.</ins></h2>
 
 <p>This repository consists of two ROS2 packages, <b>listener and hubo_voice_command</b>.</p>
 <p>Listener consists of the general client that extracts the actual keywords from the transcribed text, then asynchronously sends them to the server</p>
