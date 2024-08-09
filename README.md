@@ -9,6 +9,8 @@
 <p>The custom service String is created to be used with these packages for transfer of keywords</p>
 <p>custom action message Huboaction is created to be used to communicate to the action server</p>
 
+![image](https://github.com/user-attachments/assets/b89b1513-22b5-4236-a478-1c23d3863106)
+
 <h3>Installation</h3>
 <ul>
   <li>Download the  packages into your {ros2 workspace}/src</li>
