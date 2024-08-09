@@ -10,6 +10,7 @@
 <p>custom action message Huboaction is created to be used to communicate to the action server</p>
 
 ![Screencastfrom08-09-2024095405AM-ezgif com-speed](https://github.com/user-attachments/assets/036e9f6b-25d6-4eb1-a42a-19fdd17beb86)
+working pipeline to extract keywords from complex sentences
 
 <h3>Installation</h3>
 <ul>
