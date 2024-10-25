@@ -17,6 +17,7 @@ class KeyService(Node):
         self.msg = request.message
         self.get_logger().info(f"Received: {self.msg}")
         self.lst = self.msg.split()
+        """
         for ins in self.lst:
             if ins == 'walk':
                 self.send_goal('walk')
@@ -28,6 +29,7 @@ class KeyService(Node):
                 self.send_goal('transform')
             elif ins == 'stop':
                 self.send_goal('stop')
+        """
         return response
 
     def send_goal(self, text):
