@@ -25,7 +25,7 @@ if(BUILD_TESTING)
 endif()
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  "srv/String.srv"
+  "srv/Stringer.srv"
   "action/Huboaction.action"
 )
 

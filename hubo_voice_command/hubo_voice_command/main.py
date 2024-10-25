@@ -1,5 +1,5 @@
 import rclpy
-from custom_interfaces.srv import String
+from custom_interfaces.srv import Stringer
 from rclpy.action import ActionClient
 from custom_interfaces.action import Huboaction
 from rclpy.node import Node
@@ -8,8 +8,9 @@ class KeyService(Node):
 
     def __init__(self):
         super().__init__('key_service')
-        self.srv = self.create_service(String, 'key_listen', self.klisten_callback)
+        self.srv = self.create_service(Stringer, 'key_listen', self.klisten_callback)
         self._action_client = ActionClient(self, Huboaction, 'hubo_as')
+        self.goal_handle = None
 
     def klisten_callback(self, request, response):
         response.success = True
@@ -33,7 +34,8 @@ class KeyService(Node):
         goal_msg = Huboaction.Goal()
         goal_msg.msg = text
         if text == 'stop':
-            return
+            future = self.goal_handle.cancel_goal_async()
+            future.add_done_callback(self.goal_canceled_callback)
         else:
             self._action_client.wait_for_server()
             self._send_goal_future = self._action_client.send_goal_async(
@@ -49,13 +51,13 @@ class KeyService(Node):
             self.get_logger().warning('Goal failed to cancel')
 
     def goal_response_callback(self, future):
-        goal_handle = future.result()
-        if not goal_handle.accepted:
+        self.goal_handle = future.result()
+        if not self.goal_handle.accepted:
             self.get_logger().info('Goal rejected')
             return
         self.get_logger().info('Goal accepted')
 
-        self._get_result_future = goal_handle.get_result_async()
+        self._get_result_future = self.goal_handle.get_result_async()
         self._get_result_future.add_done_callback(self.get_result_callback)
 
     def get_result_callback(self, future):
